@@ -13,7 +13,7 @@ import ReactDOM from "react-dom/client";
          {id: "heading", xyz: "abc"}, 
          "Hello world");
          //root.render(parent);
-*/
+
 
 // JSX ---> react element
 // class based components - OLD
@@ -36,11 +36,40 @@ const HeadingComponent2 = () => {
   <div id="container">
     <h1 className="heading"> Namaste react functional component</h1>;
   </div>;
+};*/
+
+const Header = () => {
+  return (
+    <div className="header">
+      <div className="logo-conatainer">
+        <img
+          className="logo"
+          src="https://thumbs.dreamstime.com/b/food-delivery-logo-design-template-134749604.jpg"
+        />
+      </div>
+      <div className="nav-item">
+        <ul>
+          <li>Home</li>
+          <li>About Us</li>
+          <li>Contact Us</li>
+          <li>Cart</li>
+        </ul>
+      </div>
+    </div>
+  );
+};
+
+const AppLayout = () => {
+  return (
+    <div className="app">
+      <Header />
+    </div>
+  );
 };
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(Heading);
-root.render(<HeadingComponent />);
+
+root.render(<AppLayout />);
 /**
  * header
  * - LOGO
@@ -55,10 +84,5 @@ root.render(<HeadingComponent />);
  * - LINKS
  * -ADDRESS
  * - CONTACT
- *
- *
- *
- *
- *
- *
+ 
  */
