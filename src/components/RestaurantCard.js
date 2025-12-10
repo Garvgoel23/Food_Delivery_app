@@ -1,11 +1,9 @@
+import { CDN_URL } from "../utils/constants";
+
 const RestaurantCard = (props) => {
   return (
     <div className="res-card">
-      <img
-        className="res-logo"
-        alt="res-logo"
-        src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/RX_THUMBNAIL/IMAGES/VENDOR/2025/9/1/37e31a5f-6dc1-4ef2-8a9f-67d075111a4e_16865.JPG"
-      />
+      <img className="res-logo" alt="res-logo" src={CDN_URL} />
       <h3>{props.resName} </h3>
       <h4>{props.cuisine}</h4>
       <h4>5 star</h4>

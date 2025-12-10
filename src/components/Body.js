@@ -1,4 +1,5 @@
 import RestaurantCard from "./RestaurantCard";
+import reslist from "../utils/mockdata";
 const Body = () => {
   return (
     <div className="body">
