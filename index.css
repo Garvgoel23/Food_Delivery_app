@@ -25,7 +25,6 @@
 .res-card {
   padding: 5px;
   width: 200px;
-  height: 400px;
 }
 
 .search {
@@ -43,4 +42,8 @@
   display: flex;
   flex-wrap: wrap;
   margin: 5px;
+}
+.filter-btn {
+  margin: 10px;
+  cursor: pointer;
 }

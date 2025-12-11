@@ -3,13 +3,15 @@ import reslist from "../utils/mockdata";
 const Body = () => {
   return (
     <div className="body">
-      <div className="search">Search</div>
+      <div className="filter">
+        <button className="filter-btn" onClick={() => {}}>
+          Top Rated Restaurant
+        </button>
+      </div>
       <div className="res-container">
-        <RestaurantCard
-          resName="Meghna Foods"
-          cuisine="Biryani, north indian"
-        />
-        <RestaurantCard resName="PizzaHut" cuisine="Burger,Pizza, Fries" />
+        {reslist.map((restaurant, index) => (
+          <RestaurantCard key={index} resData={restaurant} />
+        ))}
       </div>
     </div>
   );
