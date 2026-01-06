@@ -14,6 +14,7 @@ const Body = () => {
 
     const json = await data.json();
     setListOfRestaurants(
+      //optional chaining
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
