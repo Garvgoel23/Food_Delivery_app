@@ -25,6 +25,8 @@
 .res-card {
   padding: 5px;
   width: 200px;
+  background-color: #ebebeb;
+  margin: 5px;
 }
 
 .search {
