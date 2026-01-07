@@ -62,3 +62,8 @@
   gap: 20px;
   padding: 20px;
 }
+.login {
+  padding: 20px;
+  cursor: pointer;
+  margin: 10px;
+}
