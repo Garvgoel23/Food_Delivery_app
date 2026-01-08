@@ -1,30 +1,40 @@
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
-
+import { MENU_API } from "../utils/constants";
+import { useParams } from "react-router-dom";
 const RestaurantMenu = () => {
   const [resInfo, setResInfo] = useState(null);
+  const { resId } = useParams();
+
   useEffect(() => {
     fetchMenu();
   }, []);
   const fetchMenu = async () => {
-    const data = await fetch(
-      "https://foodfire.onrender.com/api/menu?page-type=REGULAR_MENU&complete-menu=true&lat=21.1702401&lng=72.83106070000001&&submitAction=ENTER&restaurantId="
-    );
+    const data = await fetch(MENU_API + resId);
     const json = await data.json();
     console.log(json);
     setResInfo(json?.data);
   };
+  if (resInfo === null) return <Shimmer />;
+  const { name, cuisines, costfortwo } = resInfo?.cards[0]?.card?.card?.info;
 
-  return resInfo === null ? (
-    <Shimmer />
-  ) : (
+  const { itemCards } =
+    resInfo?.cards[2]?.card?.groupedcard?.cardGroupMap?.REGULAR?.cards[1]?.card
+      ?.card;
+
+  return (
     <div className="menu">
-      <h1></h1>
-      <h2>Menu</h2>
+      <h1>{name}</h1>
+      <p>
+        {cuisines.join(", ")} - {costfortwo}
+      </p>
+      <h2>menu</h2>
       <ul>
-        <li>Biryani</li>
-        <li>Burger</li>
-        <li>drinks</li>
+        {itemCards.map((item) => (
+          <li key={item.card.info.id}>
+            {item.card.info.name} - {item.card.info.price}
+          </li>
+        ))}
       </ul>
     </div>
   );
