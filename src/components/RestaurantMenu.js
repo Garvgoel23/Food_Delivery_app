@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 const RestaurantMenu = () => {
   const [resInfo, setResInfo] = useState(null);
   const { resId } = useParams();
+  console.log(resId);
 
   useEffect(() => {
     fetchMenu();
@@ -15,13 +16,16 @@ const RestaurantMenu = () => {
     console.log(json);
     setResInfo(json?.data);
   };
+  console.log(resInfo);
+
   if (resInfo === null) return <Shimmer />;
-  const { name, cuisines, costfortwo } = resInfo?.cards[0]?.card?.card?.info;
+  const { name, cuisines, costfortwo } = resInfo?.cards[2]?.card?.card?.info;
 
   const { itemCards } =
-    resInfo?.cards[2]?.card?.groupedcard?.cardGroupMap?.REGULAR?.cards[1]?.card
-      ?.card;
-
+    resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.filter((e) =>
+      e.card?.card?.hasOwnProperty("itemCards")
+    );
+  console.log(itemCards);
   return (
     <div className="menu">
       <h1>{name}</h1>
@@ -30,9 +34,9 @@ const RestaurantMenu = () => {
       </p>
       <h2>menu</h2>
       <ul>
-        {itemCards.map((item) => (
-          <li key={item.card.info.id}>
-            {item.card.info.name} - {item.card.info.price}
+        {itemCards?.map((item) => (
+          <li key={item?.card?.info?.id}>
+            {item?.card?.info?.name} - {item?.card?.info?.price}
           </li>
         ))}
       </ul>

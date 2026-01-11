@@ -26,7 +26,7 @@ const Header = () => {
             onClick={() => {
               btnNameReact === "Login"
                 ? setbtnNameReact("Logout")
-                : setbtnNameReact("Login ");
+                : setbtnNameReact("Login");
             }}
           >
             {btnNameReact}

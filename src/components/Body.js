@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+//import { RESTAURANT_API } from "../utils/constants";
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
@@ -13,14 +14,14 @@ const Body = () => {
 
   const fetchData = async () => {
     const data = await fetch(
-      "https://foodfire.onrender.com/api/restaurants?lat=21.1702401&lng=72.83106070000001&page_type=DESKTOP_WEB_LISTING"
+      " https://foodfire.onrender.com/api/restaurants?lat=21.1702401&lng=72.83106070000001&page_type=DESKTOP_WEB_LISTING"
     );
 
     const json = await data.json();
     const restaurants =
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants;
-
+    console.log(restaurants);
     setListOfRestaurants(restaurants);
     setFilteredRestaurants(restaurants);
   };
@@ -64,10 +65,10 @@ const Body = () => {
       </div>
 
       <div className="res-container">
-        {filteredRestaurants.map((restaurant) => (
+        {filteredRestaurants?.map((restaurant) => (
           <Link
             key={restaurant.info.id}
-            to={"/restaurants/" + restaurant.data.id}
+            to={"/restaurants/" + restaurant?.info?.id}
           >
             <RestaurantCard resData={restaurant} />
           </Link>
