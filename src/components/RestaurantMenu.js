@@ -21,10 +21,13 @@ const RestaurantMenu = () => {
   if (resInfo === null) return <Shimmer />;
   const { name, cuisines, costfortwo } = resInfo?.cards[2]?.card?.card?.info;
 
-  const { itemCards } =
-    resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.filter((e) =>
-      e.card?.card?.hasOwnProperty("itemCards")
-    );
+  const itemCards =
+    resInfo?.cards
+      ?.find((c) => c?.groupedCard)
+      ?.groupedCard?.cardGroupMap?.REGULAR?.cards?.find(
+        (c) => c?.card?.card?.itemCards
+      )?.card?.card?.itemCards || [];
+
   console.log(itemCards);
   return (
     <div className="menu">
@@ -36,7 +39,7 @@ const RestaurantMenu = () => {
       <ul>
         {itemCards?.map((item) => (
           <li key={item?.card?.info?.id}>
-            {item?.card?.info?.name} - {item?.card?.info?.price}
+            {item?.card?.info?.name} - {item?.card?.info?.price / 100}
           </li>
         ))}
       </ul>
