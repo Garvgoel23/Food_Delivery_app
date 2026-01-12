@@ -4,25 +4,26 @@ class UserClass extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      count: 0,
+      userInfo: {
+        name: "Garv",
+        Location: "Delhi",
+      },
     };
   }
+  async componentDidMount() {
+    // API CALLS are made inside this
+    const data = await fetch("https://api.github.com/users/Garvgoel23");
+    const json = await data.json();
+
+    this.setState({
+      userInfo: json,
+    });
+  }
   render() {
-    const { count } = this.state;
     return (
       <div className="user-card">
-        <h1>count = {count}</h1>
-        <button
-          onClick={() => {
-            this.setState({
-              count: this.state.count + 1,
-            });
-          }}
-        >
-          Count increase
-        </button>
-        <h2>{this.props.name}</h2>
-        <h3>Delhi</h3>
+        <h2>{this.state.userInfo.name}</h2>
+        <h3>{this.state.userInfo.location}</h3>
         <h4>@garvgoel13</h4>
       </div>
     );
