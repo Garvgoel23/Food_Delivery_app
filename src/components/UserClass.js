@@ -19,6 +19,7 @@ class UserClass extends React.Component {
       userInfo: json,
     });
   }
+  // componentWillUnmount() {}
   render() {
     return (
       <div className="user-card">
