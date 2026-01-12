@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
+import useOnlineStatus from "../utils/useOnlineStatus";
 import { Link } from "react-router-dom";
 //import { RESTAURANT_API } from "../utils/constants";
 const Body = () => {
@@ -25,7 +26,10 @@ const Body = () => {
     setListOfRestaurants(restaurants);
     setFilteredRestaurants(restaurants);
   };
+  const onlineStatus = useOnlineStatus();
 
+  if (onlineStatus === false)
+    return <h1> You are offline check your internet connection</h1>;
   if (listOfRestaurants.length === 0) return <Shimmer />;
 
   return (
