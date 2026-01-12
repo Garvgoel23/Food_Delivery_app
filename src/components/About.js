@@ -5,7 +5,6 @@ const About = () => {
     <div>
       <h1>About</h1>
       <h2>This is a food delivery web application</h2>
-      <User name={"Garv Goel"} />
       <UserClass name={"Garv Goel"} />
     </div>
   );
