@@ -1,17 +1,27 @@
 import React from "react";
 
-class UserClass extends React.Component {
-  constructor(props) {
+interface UserInfo {
+  name: string;
+  location: string;
+}
+
+interface UserState {
+  userInfo: UserInfo;
+}
+
+class UserClass extends React.Component<{}, UserState> {
+  constructor(props: {}) {
     super(props);
+
     this.state = {
       userInfo: {
         name: "Garv",
-        Location: "Delhi",
+        location: "Delhi",
       },
     };
   }
+
   async componentDidMount() {
-    // API CALLS are made inside this
     const data = await fetch("https://api.github.com/users/Garvgoel23");
     const json = await data.json();
 
@@ -19,15 +29,18 @@ class UserClass extends React.Component {
       userInfo: json,
     });
   }
-  // componentWillUnmount() {}
+
   render() {
+    const { name, location } = this.state.userInfo;
+
     return (
       <div className="user-card">
-        <h2>{this.state.userInfo.name}</h2>
-        <h3>{this.state.userInfo.location}</h3>
+        <h2>{name}</h2>
+        <h3>{location}</h3>
         <h4>@garvgoel13</h4>
       </div>
     );
   }
 }
+
 export default UserClass;
