@@ -7,6 +7,7 @@ export interface RestaurantInfo {
   sla: {
     deliveryTime: number;
   };
+  promoted: boolean;
 }
 
 export interface Restaurant {

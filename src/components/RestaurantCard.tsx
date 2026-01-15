@@ -23,4 +23,16 @@ const RestaurantCard = ({ resData }: RestaurantCardProps) => {
   );
 };
 
+export const withPromotedLabel = (RestaurantCard: React.ComponentType<any>) => {
+  return (props: any) => {
+    return (
+      <div>
+        <div className="absolute bg-black text-white p-1 rounded-bl-lg rounded-tr-lg">
+          Promoted
+        </div>
+        <RestaurantCard {...props} />
+      </div>
+    );
+  };
+};
 export default RestaurantCard;
