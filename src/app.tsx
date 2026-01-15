@@ -10,14 +10,14 @@ import UserContext from "./utils/UserContext";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 
 const AppLayout = () => {
-  //   const [userinfo, setUserInfo] = useState();
-  //   useEffect(() => {
-  //     const data = { name: "Garv" };
-  //     setUserInfo(data.name);
-  //   }, []);
+  // const [userinfo, setUserInfo] = useState();
+  // useEffect(() => {
+  //   const data = { name: "Garv" };
+  //   setUserInfo(data.name);
+  // }, []);
 
   return (
-    // <UserContext.Provider value={{ LoggedInUser: userinfo }}>
+    //   <UserContext.Provider value={{ LoggedInUser: userinfo , setUserInfo}}>
     <div className="app">
       <Header />
       <Outlet />
