@@ -43,9 +43,9 @@ const RestaurantMenu = () => {
 
       <h2 className="font-bold">Menu</h2>
 
-      <ul>
+      <div>
         {itemCards.map((item) => (
-          <li
+          <div
             key={item.card.info.id}
             className="p-2 m-2 border-b-1 border-gray-300 text-left flex bg-blue-50 rounded-lg hover:bg-blue-100 shadow-md "
           >
@@ -70,9 +70,9 @@ const RestaurantMenu = () => {
               </span>
               <p className="text-xs ">{item.card.info.description}</p>
             </div>
-          </li>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };
