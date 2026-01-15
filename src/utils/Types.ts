@@ -13,3 +13,11 @@ export interface RestaurantInfo {
 export interface Restaurant {
   info: RestaurantInfo;
 }
+export interface MenuItemInfo {
+  id: string;
+  name: string;
+  price: number;
+  description: string;
+  defaultPrice: number;
+  imageId: string;
+}

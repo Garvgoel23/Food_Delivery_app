@@ -1,17 +1,8 @@
 import Shimmer from "./Shimmer";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
 import { useParams } from "react-router-dom";
-import RestaurantCategory from "./RestaurantCategory";
 import { CDN_URL } from "../utils/constants";
-
-interface MenuItemInfo {
-  id: string;
-  name: string;
-  price: number;
-  description: string;
-  defaultPrice: number;
-  imageId: string;
-}
+import { MenuItemInfo } from "../utils/Types";
 
 interface ItemCard {
   card: {
@@ -56,13 +47,19 @@ const RestaurantMenu = () => {
         {itemCards.map((item) => (
           <li
             key={item.card.info.id}
-            className="p-2 m-2 border-b-1 border-gray-300 text-left flex bg-blue-50 rounded-lg hover:bg-blue-100 shadow-md"
+            className="p-2 m-2 border-b-1 border-gray-300 text-left flex bg-blue-50 rounded-lg hover:bg-blue-100 shadow-md "
           >
-            <img
-              src={CDN_URL + item.card.info.imageId}
-              alt={item.card.info.name}
-              className="w-20 h-20 inline-block mr-4 rounded-lg "
-            />
+            <div>
+              <img
+                src={CDN_URL + item.card.info.imageId}
+                alt={item.card.info.name}
+                className="w-20 h-auto inline-block mr-4 rounded-lg "
+              />
+              <button className="ml-2 bg-white-500 text-black px-2  rounded hover:bg-gray-200 border-2 border-black my-1 py-1 flex justify-center items-center">
+                Add+
+              </button>
+            </div>
+
             <div className="py-2">
               <span className="">{item.card.info.name}</span>
               <span>
