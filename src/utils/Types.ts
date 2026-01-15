@@ -21,3 +21,31 @@ export interface MenuItemInfo {
   defaultPrice: number;
   imageId: string;
 }
+
+export interface ItemInfo {
+  id: string;
+  name: string;
+  price?: number;
+  defaultPrice?: number;
+}
+
+export interface ItemCard {
+  card: {
+    info: ItemInfo;
+  };
+}
+
+export interface CategoryCard {
+  card: {
+    card: {
+      title: string;
+      itemCards: ItemCard[];
+    };
+  };
+}
+
+export interface RestaurantCategoryProps {
+  data: CategoryCard;
+  showItems: boolean;
+  changeIndex: () => void;
+}

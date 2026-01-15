@@ -41,7 +41,7 @@ const Header = () => {
           >
             {btnNameReact}
           </button>
-          <li className="px-4 font-bold">User: {data.LoggedInUser}</li>
+          <li className="px-4 font-bold ">User: {data.LoggedInUser}</li>
         </ul>
       </div>
     </div>
