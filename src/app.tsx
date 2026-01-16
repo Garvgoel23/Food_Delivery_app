@@ -10,21 +10,23 @@ import UserContext from "./utils/UserContext";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
+import Cart from "./components/Cart";
 const AppLayout = () => {
-  // const [userinfo, setUserInfo] = useState();
-  // useEffect(() => {
-  //   const data = { name: "Garv" };
-  //   setUserInfo(data.name);
-  // }, []);
+  const [userinfo, setUserInfo] = useState<string>("");
+
+  useEffect(() => {
+    const data = { name: "Garv" };
+    setUserInfo(data.name);
+  }, []);
 
   return (
     <Provider store={appStore}>
-      {/* <UserContext.Provider value={{ LoggedInUser: userinfo , setUserInfo}}> */}
-      <div className="app">
-        <Header />
-        <Outlet />
-      </div>
-      {/* </UserContext.Provider> */}
+      <UserContext.Provider value={{ LoggedInUser: userinfo }}>
+        <div className="app">
+          <Header />
+          <Outlet />
+        </div>
+      </UserContext.Provider>
     </Provider>
   );
 };
@@ -35,26 +37,17 @@ const appRouter = createBrowserRouter([
     element: <AppLayout />,
     errorElement: <Error />,
     children: [
-      {
-        path: "/",
-        element: <Body />,
-      },
-      {
-        path: "/about",
-        element: <About />,
-      },
-      {
-        path: "/contact",
-        element: <Contact />,
-      },
-      {
-        path: "/restaurants/:resId",
-        element: <RestaurantMenu />,
-      },
+      { path: "/", element: <Body /> },
+      { path: "/about", element: <About /> },
+      { path: "/contact", element: <Contact /> },
+      { path: "/restaurants/:resId", element: <RestaurantMenu /> },
+      { path: "/cart", element: <Cart /> },
     ],
   },
 ]);
 
-const root = ReactDOM.createRoot(document.getElementById("root")!);
+const root = ReactDOM.createRoot(
+  document.getElementById("root") as HTMLElement
+);
 
 root.render(<RouterProvider router={appRouter} />);

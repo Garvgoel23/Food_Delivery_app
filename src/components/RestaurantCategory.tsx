@@ -1,3 +1,5 @@
+import { useDispatch } from "react-redux";
+import { addItem } from "../utils/cartSlice";
 import {
   RestaurantCategoryProps,
   ItemInfo,
@@ -10,6 +12,12 @@ const RestaurantCategory = ({
   showItems,
   changeIndex,
 }: RestaurantCategoryProps) => {
+  const dispatch = useDispatch();
+  const handleAddItem = (item: ItemInfo) => {
+    console.log("Item added to cart:", item);
+    // Here you can dispatch an action to add the item to the Redux store
+    dispatch(addItem(item));
+  };
   return (
     <div className="w-6/12 mx-auto my-4 bg-gray-100 rounded-lg shadow-md">
       <div
@@ -38,7 +46,10 @@ const RestaurantCategory = ({
                 </p>
               </div>
 
-              <button className="border px-3 py-1 rounded text-sm font-semibold hover:bg-gray-100">
+              <button
+                className="border px-3 py-1 rounded text-sm font-semibold hover:bg-gray-100"
+                onClick={() => handleAddItem(item.card.info)}
+              >
                 ADD +
               </button>
             </div>
