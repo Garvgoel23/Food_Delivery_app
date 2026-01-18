@@ -16,9 +16,11 @@ const RestaurantCard = ({ resData }: RestaurantCardProps) => {
         alt={name}
       />
       <h3 className="font-bold py-4 text-lg">{name}</h3>
-      <h4>{cuisines.join(", ")}</h4>
-      <h4>{avgRating}</h4>
-      <h4>{sla.deliveryTime} mins</h4>
+      <h4 className="flex">{cuisines.join(", ")}</h4>
+      <div className="flex justify-between">
+        <h4>{avgRating} ⭐</h4>
+        <h4>{sla.deliveryTime} mins</h4>
+      </div>
     </div>
   );
 };
