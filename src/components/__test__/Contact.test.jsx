@@ -24,3 +24,9 @@ test("Contact component renders button correctly", () => {
 
   expect(input).toBeInTheDocument();
 });
+test("should load 2 input boxes", () => {
+  render(<Contact />);
+  const inputboxes = screen.getAllByRole("textbox");
+
+  expect(inputboxes).toBeInTheDocument();
+});
