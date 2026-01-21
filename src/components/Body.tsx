@@ -9,7 +9,7 @@ import UserContext from "../utils/UserContext";
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState<Restaurant[]>([]);
   const [filteredRestaurants, setFilteredRestaurants] = useState<Restaurant[]>(
-    []
+    [],
   );
 
   const [searchText, setSearchText] = useState("");
@@ -21,7 +21,7 @@ const Body = () => {
 
   const fetchData = async () => {
     const data = await fetch(
-      "https://foodfire.onrender.com/api/restaurants?lat=21.1702401&lng=72.83106070000001&page_type=DESKTOP_WEB_LISTING"
+      "https://foodfire.onrender.com/api/restaurants?lat=21.1702401&lng=72.83106070000001&page_type=DESKTOP_WEB_LISTING",
     );
 
     const json = await data.json();
@@ -50,6 +50,7 @@ const Body = () => {
         <div className="search m-4 p-4">
           <input
             type="text"
+            data-testid="search-input"
             className="border border-solid border-black "
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
@@ -60,7 +61,7 @@ const Body = () => {
           "
             onClick={() => {
               const filtered = listOfRestaurants.filter((res) =>
-                res.info.name.toLowerCase().includes(searchText.toLowerCase())
+                res.info.name.toLowerCase().includes(searchText.toLowerCase()),
               );
               setFilteredRestaurants(filtered);
             }}
@@ -73,7 +74,7 @@ const Body = () => {
           className="px-4 py-2 bg-gray-100 m-4 rounded-lg"
           onClick={() => {
             const filtered = listOfRestaurants.filter(
-              (res) => res.info.avgRating > 4.5
+              (res) => res.info.avgRating > 4.5,
             );
             setFilteredRestaurants(filtered);
           }}
